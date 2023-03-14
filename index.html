@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JS Slider</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    body {
+      background: #333;
+    }
+    * {
+      color: #eee;
+    }
+    .shift-slider__slide {
+      width: 300px;
+      height: 30px;
+      background: #888;
+      margin-bottom: 5px;
+    }
+    .un-shifted {
+      background: green;
+    }
+  </style>
+</head>
+<body>
+  <main>
+
+    <h1>Slider 01</h1>
+    <div id="testSlider" class="slider" data-shift-options='{"responsive": [{"breakpoint": 768, "unshift": false}], "unshift": true, "showDots": true, "nextButton": "Data Next"}'>
+      <div>Test Slider 1</div>
+      <div>Test Slider 2</div>
+      <div>Test Slider 3</div>
+      <div>Test Slider 4</div>
+      <div>Test Slider 5</div>
+      <div>Test Slider 6</div>
+      <div>Test Slider 7</div>
+      <div>Test Slider 8</div>
+    </div>
+
+    <br><br><br>
+
+    <h1>Slider 02</h1>
+    <div class="slider" data-shift-options='{"responsive": [{ "breakpoint": 768, "unshift": true }] }'>
+      <div>Test Slider 1</div>
+      <div>Test Slider 2</div>
+      <div>Test Slider 3</div>
+      <div>Test Slider 4</div>
+      <div>Test Slider 5</div>
+      <div>Test Slider 6</div>
+      <div>Test Slider 7</div>
+      <div>Test Slider 8</div>
+      <div>Test Slider 9</div>
+      <div>Test Slider 10</div>
+    </div>
+  </main>
+<script src="Shift.js"></script>
+<script>
+  const slider = new Shift('.slider');
+  
+  // const slider = new Shift('.slider', {
+    // showProgressBar: false,
+    // showDots: false,
+    // showArrows: false
+  // });
+</script>
+</body>
+</html>
