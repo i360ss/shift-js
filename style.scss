@@ -1,9 +1,16 @@
-.slider {
+.shift-slider {
+  overflow-x: hidden;
   &__wrapper {
-
+    padding: 0;
+    width: 100%;
+    background: green; //temp
+    white-space: nowrap;
+    display: inline-flex;
   }
-  &__slider {
-
+  &__slide {
+    float: left;
+    padding: 0;
+    min-width: 200px;
   }
   &__dots {
 
@@ -11,7 +18,14 @@
   &__progress-bar {
 
   }
-  &__buttons {
+  &__arrow {
+    cursor: pointer;
+    color: #333333;
+    background: rgba(255,255,255,.5);
+    border: none;
+    padding: 10px;
+    margin-right: 3px;
+    font-size: 16px;
     &--next {
 
     }

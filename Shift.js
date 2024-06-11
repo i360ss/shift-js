@@ -111,7 +111,9 @@ class Shift {
       }
 
       // Setup Slider DOM
-      this.setUpShiftSlider(shiftDOM, index);
+      if(this.state__removed === false && this.state__unShifted === false){
+        this.setUpShiftSlider(shiftDOM, index);
+      }
     });
   }
 
@@ -246,9 +248,56 @@ class Shift {
    * @param {int} index
    */
   setUpShiftSlider(sliderDOM, index) {
-    const slides = sliderDOM.querySelectorAll('.shift-slider__wrapper > *');
-    // console.log(slides);
-    // add classes according to settings ad style those classes + make the slider track and functionality
+    this.__track = sliderDOM.querySelector(`.${this.GS.sliderWrapperClass}`);
+    this.__slides = sliderDOM.querySelectorAll(`.${this.GS.sliderWrapperClass} > *`);
+    this.__slideWidth = this.__slides[0].offsetWidth;
+    this.__prevButton = sliderDOM.querySelector(`.${this.GS.arrowDefaultClass}--prev`);
+    this.__nextButton = sliderDOM.querySelector(`.${this.GS.arrowDefaultClass}--next`);
+    this.__trackWidth = this.__track.offsetWidth;
+
+    this.state__arrowTriggered = false;
+
+    if(this.__prevButton){
+      this.__prevButton.addEventListener('click', (ev) => {
+        if(this.state__arrowTriggered === false) {
+          this.state__arrowTriggered = true;
+          this.slideTo( this.__slideWidth, 'r' );
+        }
+      });
+    }
+
+    if(this.__nextButton){
+      this.__nextButton.addEventListener('click', (ev) => {
+        if(this.state__arrowTriggered === false) {
+          this.state__arrowTriggered = true;          
+          this.slideTo( this.__slideWidth );
+        }
+      });
+    }
+  }
+
+
+  /**
+   * Slide to specific place (px)
+   * @param {int} to 
+   */
+  slideTo(to, dir='l') {
+    const
+    trackPos = this.__track.getBoundingClientRect(),
+    currentPos = parseInt(trackPos.left || 0);
+
+    if(dir == 'r'){
+      to = currentPos + to;
+    } else {
+      to = currentPos - to;
+    }
+
+    this.__track.style.transition = this.TDO.speed+'ms';
+    this.__track.style.transform = `translate3d(${to}px, 0px, 0px)`;
+
+    setTimeout(() => {
+      this.state__arrowTriggered = false;
+    }, this.TDO.speed);
   }
 
 }

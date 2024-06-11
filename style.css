@@ -1,1 +1,24 @@
-/*# sourceMappingURL=style.css.map */
+.shift-slider {
+  overflow-x: hidden;
+}
+.shift-slider__wrapper {
+  padding: 0;
+  width: 100%;
+  background: green;
+  white-space: nowrap;
+  display: inline-flex;
+}
+.shift-slider__slide {
+  float: left;
+  padding: 0;
+  min-width: 200px;
+}
+.shift-slider__arrow {
+  cursor: pointer;
+  color: #333333;
+  background: rgba(255, 255, 255, 0.5);
+  border: none;
+  padding: 10px;
+  margin-right: 3px;
+  font-size: 16px;
+}/*# sourceMappingURL=style.css.map */
